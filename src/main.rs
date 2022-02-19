@@ -120,7 +120,7 @@ fn read_config(filepath: String) -> std::io::Result<Config> {
 async fn record_stream(config: &Config) -> Result<(), Box<dyn std::error::Error>> {
     let client = reqwest::ClientBuilder::new().build()?;
 
-    let url = format!("https://{}//v3/accounts/{}/pricing/stream?instruments={}", config.hostname.as_str(), config.account.as_str(), config.instruments.join("%2C"));
+    let url = format!("https://{}/v3/accounts/{}/pricing/stream?instruments={}", config.hostname.as_str(), config.account.as_str(), config.instruments.join("%2C"));
 
     let stream = client.get(url)
         .header(reqwest::header::AUTHORIZATION, "Bearer ".to_owned() + config.token.as_str())
