@@ -3,7 +3,7 @@ use tokio_util::io::StreamReader;
 use tokio::io::AsyncBufReadExt;
 use serde::{Deserialize, Serialize, Deserializer, de};
 use chrono::{DateTime, Utc, TimeZone};
-use clap::{Arg, App};
+use clap::{Arg, Command};
 use std::str::FromStr;
 use std::fmt::Display;
 use std::io::{ErrorKind, Write};
@@ -98,7 +98,7 @@ async fn main() -> Result<(), std::io::Error> {
 }
 
 fn get_config_file() ->  String {
-    let matches = App::new("oanda-stream-recorder")
+    let matches = Command::new("oanda-stream-recorder")
         .version("0.1.0")
         .author("Ivan Ganev <iganev@cytec.bg>")
         .about("oanda-stream-recorder")
